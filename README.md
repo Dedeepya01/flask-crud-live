@@ -16,16 +16,16 @@ This project demonstrates how to build and run a RESTful API with a PostgreSQL d
 ## 📁 Project Structure
 
 flask-crud-live/
- │
- ├── app.py
  
- ├── Dockerfile
+  ├── app.py
  
- ├── docker-compose.yml
+  ├── Dockerfile
+  
+  ├── docker-compose.yml
  
- ├── requirements.txt
+  ├── requirements.txt
  
- └── README.md
+  └── README.md
 
 ## ⚙️ Features
 - Create a new record
