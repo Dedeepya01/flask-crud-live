@@ -13,24 +13,12 @@ This project demonstrates how to build and run a RESTful API with a PostgreSQL d
 - Docker
 - REST API
 
-## 📁 Project Structure
 
-flask-crud-live/
- 
-  ├── app.py
- 
-  ├── Dockerfile
-  
-  ├── docker-compose.yml
- 
-  ├── requirements.txt
- 
-  └── README.md
 
 ## ⚙️ Features
 - Create a new record
 - Get all records
-- Get a record by ID
 - Update a record
 - Delete a record
 - Dockerized application
+- Web application
