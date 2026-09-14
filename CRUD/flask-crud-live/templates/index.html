@@ -1,0 +1,250 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>User Management</title>
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+</head> 
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">User<span>Manager</span></div>
+
+        <div class="api-status">
+            <span class="status-dot"></span>
+            Flask API
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section class="hero">
+        <div>
+            <p class="eyebrow">USER MANAGEMENT</p>
+            <h1>Manage Users</h1>
+            <p class="subtitle">
+                Create, edit and manage your users easily.
+            </p>
+        </div>
+
+        <button class="btn btn-primary" onclick="openAddModal()">
+            + Add User
+        </button>
+    </section>
+
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <div class="stat-icon">👥</div>
+
+            <div>
+                <p>Total Users</p>
+                <h2 id="totalUsers">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon green">✓</div>
+
+            <div>
+                <p>Server Status</p>
+                <h2 class="online">Online</h2>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="users-card">
+
+        <div class="card-header">
+
+            <div>
+                <h2>All Users</h2>
+                <p>Manage your registered users.</p>
+            </div>
+
+            <div class="search">
+                <span>🔍</span>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search users..."
+                    oninput="searchUsers()"
+                >
+            </div>
+
+        </div>
+
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading users...
+        </div>
+
+
+        <div id="errorMessage" class="error-message"></div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>USERNAME</th>
+                        <th>EMAIL</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+
+                <tbody id="usersTable"></tbody>
+
+            </table>
+
+        </div>
+
+
+        <div id="emptyState" class="empty-state">
+
+            <div class="empty-icon">👥</div>
+
+            <h3>No Users Found</h3>
+
+            <p>Add a user to get started.</p>
+
+            <button
+                class="btn btn-primary"
+                onclick="openAddModal()">
+                + Add User
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- Add / Edit Modal -->
+
+<div id="userModal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+                <small>USER MANAGEMENT</small>
+                <h2 id="modalTitle">Add User</h2>
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="userForm">
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter email"
+                    required
+                >
+
+            </div>
+
+
+            <p id="formError" class="form-error"></p>
+
+
+            <div class="modal-buttons">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="closeModal()">
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="submitButton">
+                    Add User
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+<!-- Delete Modal -->
+
+<div id="deleteModal" class="modal">
+
+    <div class="delete-box">
+
+        <div class="warning-icon">!</div>
+
+        <h2>Delete User?</h2>
+
+        <p>
+            Are you sure you want to delete this user?
+            This action cannot be undone.
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeDeleteModal()">
+                Cancel
+            </button>
+
+            <button
+                class="btn btn-danger"
+                onclick="confirmDelete()">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body> 
+</html>
